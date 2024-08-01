@@ -1,0 +1,116 @@
+/* branch.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 1rem;
+}
+
+.content {
+    background: #1f1f1f; /* Slightly lighter dark background for the content */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Darker shadow for depth */
+    width: 100%;
+    max-width: 900px; /* Adjust as needed */
+}
+
+.branch-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.branch-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #333; /* Darker border */
+    border-radius: 4px;
+    background: #2b2b2b; /* Dark background for input fields */
+    color: #e0e0e0; /* Light text color for input fields */
+    font-size: 1rem;
+}
+
+.submit-btn {
+    background-color: #e50914; /* Netflix red background color */
+    color: #ffffff; /* White text */
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #b81d24; /* Darker red on hover */
+}
+
+.branch-message {
+    color: #ff5252; /* Light red for messages */
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.message {
+    color: #e0e0e0; /* Light text color */
+    margin-bottom: 1rem;
+}
+
+.branch-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1f1f1f; /* Dark background for table */
+    border-radius: 8px; /* Rounded corners for table */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+.branch-table th, .branch-table td {
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid #333; /* Border between cells */
+}
+
+.branch-table th {
+    background: #2b2b2b; /* Darker background for header */
+    color: #ffffff; /* White text for header */
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.branch-table td {
+    color: #e0e0e0; /* Light text color for cells */
+}
+
+.branch-table tbody tr {
+    height: 60px; /* Consistent row height */
+    transition: background-color 0.3s ease;
+}
+
+.branch-table tbody tr:hover {
+    background: #333; /* Highlight row on hover */
+}
+
+.branch-link, .delete-link {
+    color: #e50914; /* Red color for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.branch-link:hover, .delete-link:hover {
+    color: #ff6f6f; /* Lighter red on hover */
+    text-decoration: underline;
+}
+
+.delete-link {
+    color: #ff5252; /* Light red for delete links */
+}

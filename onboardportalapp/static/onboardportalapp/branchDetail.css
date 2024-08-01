@@ -1,0 +1,172 @@
+/* styles.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #141414;
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.title {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    margin-bottom: 20px;
+}
+
+.add-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e50914;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+.add-button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.add-button:hover {
+    background-color: #f6121d;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1em;
+    min-width: 400px;
+    background-color: #333;
+}
+
+.styled-table thead tr {
+    background-color: #e50914;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #2c2c2c;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #e50914;
+}
+
+.styled-table tbody tr a {
+    color: #e50914;
+    text-decoration: none;
+}
+
+.styled-table tbody tr a:hover {
+    text-decoration: underline;
+}
+
+.styled-table th.student-name, .styled-table td.student-name,
+.styled-table th.staff-name, .styled-table td.staff-name {
+    width: 20%;
+}
+
+.styled-table th.date, .styled-table td.date,
+.styled-table th.status, .styled-table td.status,
+.styled-table th.experience, .styled-table td.experience,
+.styled-table th.subject, .styled-table td.subject {
+    width: 15%;
+}
+
+.styled-table th.action, .styled-table td.action {
+    width: 10%;
+}
+
+
+@media (max-width: 768px) {
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .add-button {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    .styled-table th, .styled-table td {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+
+    .title {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.2em;
+    }
+
+    .add-button {
+        padding: 8px 16px;
+    }
+
+    .styled-table th, .styled-table td {
+        font-size: 0.8em;
+        padding: 6px 8px;
+    }
+
+    .styled-table th.student-name, .styled-table td.student-name,
+    .styled-table th.staff-name, .styled-table td.staff-name {
+        width: auto;
+    }
+
+    .styled-table th.date, .styled-table td.date,
+    .styled-table th.status, .styled-table td.status,
+    .styled-table th.experience, .styled-table td.experience,
+    .styled-table th.subject, .styled-table td.subject,
+    .styled-table th.action, .styled-table td.action {
+        width: auto;
+    }
+
+    .styled-table {
+        min-width: auto;
+    }
+}
