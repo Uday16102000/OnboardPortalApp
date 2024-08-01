@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch Management</title>
+</head>
+<body style="margin: 0; padding: 0; width: 100%; height: 100%; background-color: #141414; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; display: flex; justify-content: center; align-items: center;">
+   
+    <div class="container" style="width: 80%; max-width: 1200px; margin: auto; padding: 20px; background-color: #1c1c1c; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);">
+        <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <form method="POST" action="{% url 'onboard:addBranch' %}" class="branch-form" style="width: 100%; display: flex; justify-content: space-between; margin-bottom: 20px;">
+                {% csrf_token %}
+                <input type="text" name="branch" placeholder="Enter Branch Name" class="branch-input" style="flex: 1; padding: 10px; border: 1px solid #333; border-radius: 5px; margin-right: 10px; background-color: #333; color: #fff;">
+                <input type="submit" class="submit-btn" value="Add Branch" style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #e50914; color: #fff; cursor: pointer; transition: background-color 0.3s;">
+            </form>
+
+            {% if branch_message %}
+                <div class="branch-message" style="background-color: #333; padding: 10px; border-radius: 5px; margin-bottom: 20px;">{{ branch_message }}</div>
+            {% endif %}
+            <div class="message" id="message" style="background-color: #333; padding: 10px; border-radius: 5px; margin-bottom: 20px;">{{ message }}</div>
+            <ul class="branch-list" style="list-style-type: none; padding: 0; width: 100%;">
+                {% for branch in branch_list %}
+                    <li class="branch-item" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #333;">
+                        <a href="{% url 'onboard:viewBranchDetail' branch.id %}" class="branch-link" style="color: #fff; text-decoration: none; transition: color 0.3s;">{{ branch.branch_name }}</a>
+                        <div class="branch-actions">
+                            <span class="delete"><a href="{% url 'onboard:deleteBranch' branch.id %}" style="color: #e50914; text-decoration: none; transition: color 0.3s;">Delete</a></span>
+                        </div>
+                    </li>
+                {% empty %}
+                    <li class="branch-item" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #333;">No Branches Available</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

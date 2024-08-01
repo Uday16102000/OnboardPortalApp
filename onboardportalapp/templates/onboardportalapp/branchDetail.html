@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch Management</title>
+    <link rel="stylesheet" href="{% static 'onboardportalapp/branchDetail.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Jspider {{branch.branch_name}} Coding Institute Management</h1>
+        <div class="buttons">
+            <button class="add-button"><a href="{% url 'onboard:addStudentButton' branch_id %}">Add Student</a></button>
+            <button class="add-button"><a href="{% url 'onboard:addStaffButton' branch_id %}">Add Staff</a></button>
+            <button class="add-button"><a href="{% url 'onboard:addCourseButton' branch_id %}">Add Course</a></button>
+        </div>
+
+        <div class="table-container">
+            <!-- Student Table -->
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th class="student-name">Student Name</th>
+                        <th class="date">Start Date</th>
+                        <th class="date">End Date</th>
+                        <th class="status">Course</th>
+                        <th class="action">Edit</th>
+                        <th class="action">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in student_list %}
+                    <tr>
+                        <td class="student-name">{{ student.student_name }}</td>
+                        <td class="date">{{ student.start_Date }}</td>
+                        <td class="date">{{ student.end_Date }}</td>
+                        <td class="status">
+                            {% for course in student.course.all %}
+                                {{ course.course_name }}{% if not forloop.last %}, {% endif %}
+                            {% empty %}
+                                No courses assigned
+                            {% endfor %}
+                        </td>
+                        
+                        <td class="action"><a href="{% url 'onboard:editStudent' student.id %}">Edit</a></td>
+                        <td class="action"><a href="{% url 'onboard:deleteStudent' student.id %}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Staff Table -->
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th class="staff-name">Staff Name</th>
+                        <th class="status">Staff Status</th>
+                        <th class="experience">Experience</th>
+                        <th class="subject">Subject</th>
+                        <th class="action">Edit</th>
+                        <th class="action">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for staff in staff_list %}
+                    <tr>
+                        <td class="staff-name">{{ staff.staff_name }}</td>
+                        <td class="status">{{ staff.status }}</td>
+                        <td class="experience">{{ staff.experience }}</td>
+                        <td class="subject">{{ staff.subject }}</td>
+                        <td class="action"><a href="{% url 'onboard:editStaff' staff.id %}">Edit</a></td>
+                        <td class="action"><a href="{% url 'onboard:deleteStaff' staff.id %}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Course Table -->
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th class="course-name">Course Name</th>
+                        <th class="course-duration">Course Duration</th>
+                        <th class="branch-id">Branch ID</th>
+                        <th class="action">Edit</th>
+                        <th class="action">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in course_list %}
+                    <tr>
+                        <td class="course-name">{{ course.course_name }}</td>
+                        <td class="course-duration">{{ course.course_duration }}</td>
+                        <td class="branch-id">{{ course.branch_id }}</td>
+                        <td class="action"><a href="{% url 'onboard:editCourse' course.id %}">Edit</a></td>
+                        <td class="action"><a href="{% url 'onboard:deleteCourse' course.id %}">Delete</a></td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
