@@ -27,5 +27,5 @@ urlpatterns=[
     path("<course_id>/update-course",views.updateCourse,name="updateCourse"),
     path("<course_id>/delete-course/",views.deleteCourse,name="deleteCourse"),
 
-    path("signIn/",views.signIn,name="signIn")
+    path("admin/",views.signIn,name="signIn")
 ]

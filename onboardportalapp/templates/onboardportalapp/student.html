@@ -13,34 +13,60 @@
         <h1 class="title">Update Student</h1>
         <form method="POST" action="{% url 'onboard:updateStudent' student.id %}" class="student-form">
             {% csrf_token %}
-            <input type="text" name="student_name" value="{{student.student_name}}" placeholder="Enter student name" class="input-field">
-            <input type="date" name="start_date" value="{{ student.start_Date|date:'Y-m-d' }}" class="input-field">
-            <input type="date" name="end_date" value="{{ student.end_Date|date:'Y-m-d' }}" class="input-field">
-            
-            <input type="text" value="{{student.branch_id}}" name="branch_id" class="input-field" readonly>
-          
-            <select name="course_name" class="input-field">
-                {% for c in course_list %}
-                    <option value="{{ c.id }}" {% if c in course_student %}selected{% endif %}>{{ c.course_name }}</option>
-                {% endfor %}
-            </select>
+            <div class="form-group">
+                <label for="student_name">Student Name</label>
+                <input type="text" name="student_name" value="{{student.student_name}}" placeholder="Enter student name" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="start_date">Course Start Date</label>
+                <input type="date" name="start_date" value="{{ student.start_Date|date:'Y-m-d' }}" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="end_date">Course End Date</label>
+                <input type="date" name="end_date" value="{{ student.end_Date|date:'Y-m-d' }}" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="branch_id">Branch ID</label>
+                <input type="text" value="{{student.branch_id}}" name="branch_id" class="input-field" readonly>
+            </div>
+            <div class="form-group">
+                <label for="course_name">Course Name</label>
+                <select name="course_name" class="input-field">
+                    {% for c in course_list %}
+                        <option value="{{ c.id }}" {% if c in course_student %}selected{% endif %}>{{ c.course_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <input type="submit" value="Update Student" class="submit-btn">
         </form>
         {% else %}
         <h1 class="title">Add Student</h1>
         <form method="POST" action="{% url 'onboard:saveStudent' %}" class="student-form">
             {% csrf_token %}
-            
-            <label class="label-align" for="student_name">Student Name</label>
-            <input type="text" name="student_name" placeholder="Enter student name" class="input-field">
-            <input type="date" name="start_date" value="start_date" class="input-field">
-            <input type="date" name="end_date" value="end_date" class="input-field">
-            <input type="text" value="{{branch_id}}" name="branch_id" class="input-field" readonly>
-            <select name="course_name" class="input-field" >
-                {% for c in course_list %}
-                <option value="{{ c.id }}">{{ c.course_name }}</option>
-                {% endfor %}
-            </select>
+            <div class="form-group">
+                <label for="student_name">Student Name</label>
+                <input type="text" name="student_name" placeholder="Enter student name" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="start_date">Course Start Date</label>
+                <input type="date" name="start_date" value="start_date" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="end_date">Course End Date</label>
+                <input type="date" name="end_date" value="end_date" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="branch_id">Branch ID</label>
+                <input type="text" value="{{branch_id}}" name="branch_id" class="input-field" readonly>
+            </div>
+            <div class="form-group">
+                <label for="course_name">Course Name</label>
+                <select name="course_name" class="input-field" >
+                    {% for c in course_list %}
+                    <option value="{{ c.id }}">{{ c.course_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <input type="submit" value="Add Student" class="submit-btn">
         </form>
         {% endif %}

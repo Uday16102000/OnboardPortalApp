@@ -1,32 +1,63 @@
+
+
+
+
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Management</title>
+    <title>Student Management</title>
     <link rel="stylesheet" href="{% static 'onboardportalapp/staff.css' %}">
 </head>
 <body>
     <div class="container">
         {% if staff %}
         <h1 class="title">Update Staff</h1>
-        <form method="POST" action="{% url 'onboard:updateStaff' staff.id %}" class="staff-form">
+        <form method="POST" action="{% url 'onboard:updateStaff' staff.id %}" class="student-form">
             {% csrf_token %}
-            <input type="text" name="staff_name" placeholder="Enter staff name" value="{{staff.staff_name}}" class="input-field">
-            <input type="text" name="subject" placeholder="Enter Subject Name" value="{{staff.subject}}" class="input-field">
-            <input type="number" name="experience" placeholder="Enter your experience in years" value="{{staff.experience}}" class="input-field">
-            <input type="text" value="{{staff.branch_id}}" name="branch_id" class="input-field" readonly>
+            <div class="form-group">
+                <label for="staff_name">Staff Name</label>
+                <input type="text" name="staff_name" placeholder="Enter staff name" value="{{staff.staff_name}}" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject Name</label>
+                <input type="text" name="subject" placeholder="Enter Subject Name" value="{{staff.subject}}" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience</label>
+                <input type="number" name="experience" placeholder="Enter your experience in years" value="{{staff.experience}}" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="branch_id">Branch ID</label>
+                <input type="text" value="{{staff.branch_id}}" name="branch_id" class="input-field" readonly>
+            </div>
+            
             <input type="submit" value="Update Staff" class="submit-btn">
         </form>
         {% else %}
         <h1 class="title">Add Staff</h1>
-        <form method="POST" action="{% url 'onboard:saveStaff' %}" class="staff-form">
+        <form method="POST" action="{% url 'onboard:saveStaff' %}" class="student-form">
             {% csrf_token %}
-            <input type="text" name="staff_name" placeholder="Enter staff name" class="input-field">
-            <input type="text" name="subject" placeholder="Enter Subject Name" class="input-field">
-            <input type="number" name="experience" placeholder="Enter your experience in years" class="input-field">
-            <input type="text" value="{{branch_id}}" name="branch_id" class="input-field" readonly>
+            <div class="form-group">
+                <label for="staff_name">Student Name</label>
+                <input type="text" name="staff_name" placeholder="Enter staff name" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject Name</label>
+                <input type="text" name="subject" placeholder="Enter Subject Name" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience</label>
+                <input type="number" name="experience" placeholder="Enter your experience in years" class="input-field">
+            </div>
+            <div class="form-group">
+                <label for="branch_id">Branch ID</label>
+                <input type="text" value="{{branch_id}}" name="branch_id" class="input-field" readonly>
+            </div>
+            
             <input type="submit" value="Add Staff" class="submit-btn">
         </form>
         {% endif %}

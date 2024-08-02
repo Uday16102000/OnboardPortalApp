@@ -88,7 +88,6 @@ def saveStudent(request):
      try:
         branch = Branch.objects.get(pk=branch_id)
      except Branch.DoesNotExist:
-         # Handle the case where the branch does not exist
         branch = None
         
       
@@ -116,7 +115,6 @@ def saveStaff(request):
     try:
        branch = Branch.objects.get(pk=branch_id)
     except Branch.DoesNotExist:
-         # Handle the case where the branch does not exist
         branch = None
 
     staff=Staff()
